@@ -56,6 +56,7 @@ public class Message implements BotApiObject {
     private static final String AUTHORSIGNATURE_FIELD = "author_signature";
     private static final String FORWARDSIGNATURE_FIELD = "forward_signature";
     private static final String MEDIAGROUPID_FIELD = "media_group_id";
+    private static final String CONNECTEDWEBSITE_FIELD = "connected_website";
 
     @JsonProperty(MESSAGEID_FIELD)
     private Integer messageId; ///< Integer	Unique message identifier
@@ -174,7 +175,9 @@ public class Message implements BotApiObject {
     @JsonProperty(FORWARDSIGNATURE_FIELD)
     private String forwardSignature; ///< Optional. Post author signature for messages forwarded from channel chats
     @JsonProperty(MEDIAGROUPID_FIELD)
-    private String mediaGroupId;
+    private String mediaGroupId; ///< Optional. The unique identifier of a media message group this message belongs to
+    @JsonProperty(CONNECTEDWEBSITE_FIELD)
+    private String connectedWebsite; ///< Optional. The domain name of the website on which the user has logged in
 
     public Message() {
         super();
@@ -354,6 +357,10 @@ public class Message implements BotApiObject {
         return this.document != null;
     }
 
+    public boolean hasVideo() {
+        return this.video != null;
+    }
+
     public boolean isReply() {
         return this.replyToMessage != null;
     }
@@ -394,6 +401,10 @@ public class Message implements BotApiObject {
         return successfulPayment != null;
     }
 
+    public boolean hasContact() {
+        return contact != null;
+    }
+
     public Invoice getInvoice() {
         return invoice;
     }
@@ -416,6 +427,10 @@ public class Message implements BotApiObject {
 
     public String getMediaGroupId() {
         return mediaGroupId;
+    }
+
+    public String getConnectedWebsite() {
+        return connectedWebsite;
     }
 
     @Override
@@ -462,6 +477,7 @@ public class Message implements BotApiObject {
                 ", authorSignature='" + authorSignature + '\'' +
                 ", forwardSignature='" + forwardSignature + '\'' +
                 ", mediaGroupId='" + mediaGroupId + '\'' +
+                ", connectedWebsite='" + connectedWebsite + '\'' +
                 '}';
     }
 }
