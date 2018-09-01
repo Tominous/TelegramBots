@@ -1,5 +1,47 @@
-### <a id="3.2"></a>3.2 ###
-1. Support for Api Version [3.3](https://core.telegram.org/bots/api-changelog#july-21-2017)
+### <a id="4.1"></a>4.1 ###
+1. Support for Api Version [4.1](https://core.telegram.org/bots/api-changelog#august-27-2018)
+2. Fix #507 and #512
+
+### <a id="4.0.1"></a>4.0.1 ###
+1. Fix bug #499
+
+### <a id="4.0.0"></a>4.0.0 ###
+1. Support for Api Version [4.0](https://core.telegram.org/bots/api-changelog#july-26-2018)
+2. Abilities: Internationalization
+3. Socks 5 support
+4. Improved spring boot start configuration
+5. Removed previously deprecated methods
+6. Support usage in Java 9 (library is still using java 8)
+7. Added chat-session bot module
+
+**[[How to update to version 4.0.0|How-To-Update#4.0.0]]**
+
+### <a id="3.6.1"></a>3.6.1 ###
+1. Support for proxy connections
+2. New module for Spring
+3. Bug fixing
+
+### <a id="3.6"></a>3.6 ###
+1. Support for Api Version [3.6](https://core.telegram.org/bots/api-changelog#february-13-2018)
+2. Bug fixing and other improvements
+
+### <a id="3.5"></a>3.5 ###
+1. Support for Api Version [3.5](https://core.telegram.org/bots/api-changelog#november-17-2017)
+2. Bug fixing: #168, #329 and #335
+3. Added processInvalidCommandUpdate (#337)
+4. AbilitiyBot update and tutorial (#324)
+5. Add DefaultBotCommand with message ID (#330)
+6. New wiki content (#326 and #327)
+
+### <a id="3.4"></a>3.4 ###
+1. Support for Api Version [3.4](https://core.telegram.org/bots/api-changelog#october-11-2017)
+2. Use regular expressions to split parameters in `TelegramLongPollingCommandBot` (#309)
+3. Option to handle bunch of updates at a time via `onUpdatesReceived` in `TelegramLongPollingBot` (#284)
+4. Fix characters encoding (#275)
+ 
+
+### <a id="3.3"></a>3.3 ###
+1. Support for Api Version [3.3](https://core.telegram.org/bots/api-changelog#august-23-2017)
 
 
 ### <a id="3.2"></a>3.2 ###

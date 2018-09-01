@@ -1,8 +1,10 @@
 package org.telegram.telegrambots.bots;
 
 import org.apache.http.client.config.RequestConfig;
-import org.telegram.telegrambots.ApiConstants;
-import org.telegram.telegrambots.generics.BotOptions;
+import org.apache.http.client.protocol.HttpClientContext;
+import org.apache.http.protocol.HttpContext;
+import org.telegram.telegrambots.meta.ApiConstants;
+import org.telegram.telegrambots.meta.generics.BotOptions;
 import org.telegram.telegrambots.updatesreceivers.ExponentialBackOff;
 
 import java.util.List;
@@ -16,16 +18,30 @@ import java.util.List;
 public class DefaultBotOptions implements BotOptions {
     private int maxThreads; ///< Max number of threads used for async methods executions (default 1)
     private RequestConfig requestConfig;
+    private volatile HttpContext httpContext;
     private ExponentialBackOff exponentialBackOff;
     private Integer maxWebhookConnections;
     private String baseUrl;
     private List<String> allowedUpdates;
+    private ProxyType proxyType;
+    private String proxyHost;
+    private int proxyPort;
+
+    public enum ProxyType {
+        NO_PROXY,
+        HTTP,
+        SOCKS4,
+        SOCKS5
+    }
 
     public DefaultBotOptions() {
         maxThreads = 1;
         baseUrl = ApiConstants.BASE_URL;
+        httpContext = HttpClientContext.create();
+        proxyType = ProxyType.NO_PROXY;
     }
 
+    @Override
     public String getBaseUrl() {
         return baseUrl;
     }
@@ -48,6 +64,14 @@ public class DefaultBotOptions implements BotOptions {
 
     public Integer getMaxWebhookConnections() {
         return maxWebhookConnections;
+    }
+
+    public HttpContext getHttpContext() {
+        return httpContext;
+    }
+
+    public void setHttpContext(HttpContext httpContext) {
+        this.httpContext = httpContext;
     }
 
     public void setMaxWebhookConnections(Integer maxWebhookConnections) {
@@ -80,5 +104,29 @@ public class DefaultBotOptions implements BotOptions {
      */
     public void setExponentialBackOff(ExponentialBackOff exponentialBackOff) {
         this.exponentialBackOff = exponentialBackOff;
+    }
+
+    public ProxyType getProxyType() {
+        return proxyType;
+    }
+
+    public void setProxyType(ProxyType proxyType) {
+        this.proxyType = proxyType;
+    }
+
+    public String getProxyHost() {
+        return proxyHost;
+    }
+
+    public void setProxyHost(String proxyHost) {
+        this.proxyHost = proxyHost;
+    }
+
+    public int getProxyPort() {
+        return proxyPort;
+    }
+
+    public void setProxyPort(int proxyPort) {
+        this.proxyPort = proxyPort;
     }
 }

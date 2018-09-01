@@ -2,8 +2,8 @@ package org.telegram.abilitybots.api.objects;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
-import org.telegram.telegrambots.api.objects.Update;
-import org.telegram.telegrambots.logging.BotLogger;
+import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.logging.BotLogger;
 
 import java.util.Arrays;
 import java.util.List;
@@ -149,7 +149,7 @@ public final class Ability {
     private Consumer<MessageContext> consumer;
     private Consumer<MessageContext> postConsumer;
     private List<Reply> replies;
-    private Flag[] flags;
+    private Predicate<Update>[] flags;
 
     private AbilityBuilder() {
       replies = newArrayList();
@@ -170,7 +170,7 @@ public final class Ability {
       return this;
     }
 
-    public AbilityBuilder flag(Flag... flags) {
+    public AbilityBuilder flag(Predicate<Update>... flags) {
       this.flags = flags;
       return this;
     }
